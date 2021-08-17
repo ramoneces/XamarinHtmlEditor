@@ -23,6 +23,20 @@ namespace XamarinHtmlEditor
             get { return (Func<string, Task<string>>)GetValue(EvaluateJavascriptProperty); }
             set { SetValue(EvaluateJavascriptProperty, value); }
         }
+
+        /// <summary>
+        /// Calls the specified method, waits the specified delay and retrieves the stirng value of the json variable methodNameResult
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        public async Task<string> CallAsyncMethod(string methodName, int delay = 100)
+        {
+            await EvaluateJavascript($"{methodName}()");
+            await Task.Delay(delay);
+            var result = await EvaluateJavascript($"JSON.stringify({methodName}Result)");
+            return result;
+        }
     }
 
 }

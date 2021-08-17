@@ -15,8 +15,11 @@
         </Frame>
 
         <local:HtmlEditor Grid.Row="1" x:Name="Editor" ></local:HtmlEditor>
-        <!--<WebView Grid.Row="1" x:Name="Editor" ></WebView>-->
-        <Button Grid.Row="2" Clicked="Button_Clicked" Text="Prueba"></Button>
+        <StackLayout Grid.Row="2" Orientation="Horizontal">
+            <Button Clicked="SetData_Clicked" Text="Set data"></Button>
+            <Button Clicked="ToggleReadonly_Clicked" Text="Toggle readonly"></Button>
+            <Button Clicked="GetData_Clicked" Text="Get data"></Button>
+        </StackLayout>
     </Grid>
 
 </ContentPage>
